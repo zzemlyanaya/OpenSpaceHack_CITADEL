@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">RISE</string>
+
+    <string name="title_chats">Диалоги</string>
+    <string name="title_rise">RISE</string>
+    <string name="title_profile">Профиль</string>
+
+    <string name="intro_phrase">Время RISE</string>
+    <string name="profile_phrase">Viva la Revolución, </string>
+    <string name="description">Платформа для прямой коммуникации между авторами идей и компаниями-инвесторами.</string>
+
+
+    <string name="sign_up">Создать</string>
+    <string name="sign_in">Войти</string>
+    <string name="keep_login">Запомнить меня</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="invalid_username">Имя не может быть пустым</string>
+    <string name="invalid_email">Некорректный email</string>
+    <string name="invalid_password">Пароль должен содержать как минимум 8 символов</string>
+    <string name="login_failed">Не удалось войти. Попробуйте снова?</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="connecting">Соединяем с сервером…</string>
+    <string name="connection_failed">Что-то пошло не так. Нажмите для повторного подключения.</string>
+    <string name="connection_on_list">Не удалось подключиться к серверу. Проверьте соединениние.</string>
+    <string name="cant_update">Не удалось обновить список проектов. Некоторые функции могут быть недоступны.</string>
+    <string name="personal_data">Продолжая вы даёте согласие на хранение и обработку персональных данных.</string>
+    <string name="author_promo">Публикуйте свои проекты и находите инвесторов</string>
+    <string name="author">Автор</string>
+    <string name="company_promo">Найдите проект, в который вы готовы вложится</string>
+    <string name="company">Компания</string>
+
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
+
+    <string name="about_me">О себе</string>
+    <string name="about_app">О приложении</string>
+    <string name="favourites">Избранное</string>
+    <string name="settings">Настройки</string>
+
+    <string name="notifications">Уведомления</string>
+    <string name="language">Язык</string>
+
+    <string name="empty_proj">Не указано</string>
+
+    <string name="projects">Проекты</string>
+    <string name="about_me_about">Сведения</string>
+    <string name="location">Местоположение</string>
+    <string name="contacts">Контакты</string>
+    <string name="age">Возраст</string>
+    <string name="but_contact">Написать</string>
+    <string name="empty_about">Здесь ничего не написано :)</string>
+
+    <string name="version">Версия 1.7</string>
+    <string name="about_app_networks">Мы в соцсетях</string>
+
+    <string name="dialogs">Диалоги</string>
+    <string name="search">Найти</string>
+    <string name="add_project">Добавить свой проект</string>
+    <string name="edit">Изменить</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="executing">Выполняем...</string>
+    <string name="successful">Успешно!</string>
+
+    <string name="proj_name">Название проекта</string>
+    <string name="proj_about">Описание</string>
+    <string name="proj_time">Время реализации</string>
+    <string name="proj_cost">Стоимость</string>
+    <string name="proj_tags">Тэги</string>
+    <string name="proj_website">Сайт</string>
+
+    <string name="dangerous_zone">Опасная зона</string>
+    <string name="delete">Удалить</string>
+    <string name="attention">Внимание!</string>
+    <string name="delete_message">Похоже, вы собираетесь что-то удалить. Подтвердить действие?</string>
+
+    <string name="name">Имя</string>
+    <string name="country">Страна</string>
+    <string name="city">Город</string>
+
+</resources>
