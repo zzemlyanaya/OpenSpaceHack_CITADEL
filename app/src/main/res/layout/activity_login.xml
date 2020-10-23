@@ -10,83 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="@drawable/im_background_login"
         android:backgroundTint="#ED111113"
         android:backgroundTintMode="src_over"
         android:fitsSystemWindows="true">
 
         <TextView
-            android:id="@+id/textLoginDescr"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="192dp"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="@font/montserrat_medium"
-            android:gravity="center"
-            android:text="@string/description"
-            android:textSize="19sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-
-        <TextView
-            android:id="@+id/textConnect"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="64dp"
-            android:fontFamily="@font/montserrat_regular"
-            android:gravity="center"
-            android:text="@string/connecting"
-            android:textColor="@color/text_light"
-            app:layout_constraintBottom_toBottomOf="@+id/viewPager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="64dp"
+            android:text="OpenBugTracker"
+            android:textColor="@color/accent_red"
+            android:textSize="32sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView5"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_gravity="center_vertical"
-                app:shapeAppearanceOverlay="@style/roundedImageViewSquare"
-                app:srcCompat="@drawable/rise_r" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|fill_vertical"
-                android:layout_marginStart="6dp"
-                android:layout_marginBottom="2dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/title_rise"
-                android:textSize="44sp" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             style="@style/ChipTabLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
             app:tabGravity="center"
-            app:tabIndicatorHeight="36dp"
+            app:tabIndicatorHeight="0dp"
             app:tabPaddingEnd="24dp"
             app:tabPaddingStart="24dp"
             app:tabSelectedTextColor="@color/white"
@@ -115,7 +66,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
         </androidx.viewpager2.widget.ViewPager2>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

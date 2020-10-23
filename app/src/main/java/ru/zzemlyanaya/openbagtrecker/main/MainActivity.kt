@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        val fragment = supportFragmentManager.findFragmentById(R.id.containerMain)
-        when(fragment!!.tag) {
-
-        }
+//        val fragment = supportFragmentManager.findFragmentById(R.id.containerMain)
+//        when(fragment!!.tag) {
+//
+//        }
     }
 
     private fun onBackPressedDouble(){

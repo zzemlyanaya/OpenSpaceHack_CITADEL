@@ -10,7 +10,7 @@
 
     <stroke
         android:width="2dp"
-        android:color="@color/purple_700"/>
+        android:color="@color/accent_red"/>
 
     <padding
         android:left="16dp"
