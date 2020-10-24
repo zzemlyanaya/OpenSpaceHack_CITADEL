@@ -4,56 +4,106 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.zzemlyanaya.openbagtrecker.R
+import ru.zzemlyanaya.openbagtrecker.Status
+import ru.zzemlyanaya.openbagtrecker.data.model.Resource
+import ru.zzemlyanaya.openbagtrecker.data.model.UserShortView
+import ru.zzemlyanaya.openbagtrecker.databinding.FragmentTrackerBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [TrackerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TrackerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var leaderRecyclerView: RecyclerView
+    private lateinit var bugsRecyclerView: RecyclerView
+
+    private lateinit var progressLeader: ProgressBar
+    private lateinit var progressBugs: ProgressBar
+
+    private val viewModel by lazy { ViewModelProviders.of(this).get(TrackerViewModel::class.java)}
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tracker, container, false)
+        val binding: FragmentTrackerBinding
+                = DataBindingUtil.inflate(inflater, R.layout.fragment_tracker, container, false)
+
+        leaderRecyclerView = binding.leadervoardRecylcerView
+        with(leaderRecyclerView){
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = LeaderboardRecyclerViewAdapter(emptyList())
+        }
+
+        progressLeader = binding.progressLeader
+        progressBugs = binding.progressBugs
+
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.fetchTop3LeaderBoard().observe(viewLifecycleOwner, { showLeaderData(it) })
+        //viewModel.fetchAllBugsLocally().observe(viewLifecycleOwner, { showBugsData(it) })
+    }
+
+    private fun showLeaderData(resource: Resource<List<UserShortView>?>){
+        when (resource.status) {
+            Status.SUCCESS -> {
+                leaderRecyclerView.visibility = View.VISIBLE
+                progressLeader.visibility = View.INVISIBLE
+                resource.data?.let { list ->
+                    leaderRecyclerView.adapter =
+                        LeaderboardRecyclerViewAdapter(list)
+                }
+            }
+            Status.ERROR -> {
+                leaderRecyclerView.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), getString(R.string.connection_failed), Toast.LENGTH_SHORT).show()
+            }
+            Status.LOADING -> {
+                leaderRecyclerView.visibility = View.INVISIBLE
+                progressLeader.visibility = View.VISIBLE
+            }
+        }
+    }
+
+//    private fun showLeaderData(resource: Resource<List<Bug>?>){
+//        when (resource.status) {
+//            Status.SUCCESS -> {
+//                bugsRecyclerView.visibility = View.VISIBLE
+//                progressBugs.visibility = View.INVISIBLE
+//                resource.data?.let { list ->
+//                    leaderRecyclerView.adapter =
+//                        BugsRecyclerViewAdapter(list)
+//                }
+//            }
+//            Status.ERROR -> {
+//                leaderRecyclerView.visibility = View.VISIBLE
+//                Toast.makeText(requireContext(), getString(R.string.connection_failed), Toast.LENGTH_SHORT).show()
+//            }
+//            Status.LOADING -> {
+//                bugsRecyclerView.visibility = View.INVISIBLE
+//                progressBugs.visibility = View.VISIBLE
+//            }
+//        }
+//    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TrackerFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             TrackerFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }

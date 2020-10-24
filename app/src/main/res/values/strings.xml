@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OpenBugTracker</string>
+    <string name="app_name">Open Bug Hunter</string>
 
 
     <string name="sign_up">Создать</string>
@@ -33,10 +33,23 @@
     <string name="model">Модель</string>
     <string name="os">Версия ОС</string>
 
+    <string name="leaderboard">Лидерборд</string>
+    <string name="show">Показать:</string>
+
     <string name="russian">Русский</string>
     <string name="english">English</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="filters">
+        <item>Все</item>
+        <item>Мои</item>
+        <item>Security</item>
+        <item>Blocker</item>
+        <item>Major</item>
+        <item>Minor</item>
+        <item>Spelling</item>
+    </string-array>
 
 </resources>

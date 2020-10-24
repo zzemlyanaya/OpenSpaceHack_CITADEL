@@ -1,0 +1,3 @@
+package ru.zzemlyanaya.openbagtrecker.main.tracker
+
+class BugsRecyclerViewAdapter

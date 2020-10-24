@@ -55,7 +55,7 @@ abstract class SwipeToDeleteCallback internal constructor(context: Context) :
     var mContext: Context = context
     private val mClearPaint: Paint = Paint()
     private val mBackground: ColorDrawable = ColorDrawable()
-    private val editColor: Int = Color.parseColor("#C3E7FF")
+    private val editColor: Int = Color.parseColor("#DDE7F0")
     private val editDrawable: VectorDrawable?
     private val intrinsicWidth = 70
     private val intrinsicHeight = 70

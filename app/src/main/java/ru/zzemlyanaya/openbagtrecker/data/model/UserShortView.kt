@@ -5,6 +5,8 @@ import java.io.Serializable
 
 data class UserShortView(
     @NonNull
+    val id: Int,
+    @NonNull
     val username: String,
     @NonNull
     val type: Int,

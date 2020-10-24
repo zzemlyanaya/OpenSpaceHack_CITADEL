@@ -8,10 +8,12 @@ import ru.zzemlyanaya.openbagtrecker.Constants.USER
 import ru.zzemlyanaya.openbagtrecker.R
 import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.ActivityMainBinding
+import ru.zzemlyanaya.openbagtrecker.main.achiev.AchievementsFragment
 import ru.zzemlyanaya.openbagtrecker.main.chats.ChatsFragment
 import ru.zzemlyanaya.openbagtrecker.main.editprofile.EditProfileFragment
 import ru.zzemlyanaya.openbagtrecker.main.profile.ProfileFragment
 import ru.zzemlyanaya.openbagtrecker.main.shop.ShopFragment
+import ru.zzemlyanaya.openbagtrecker.main.tracker.TrackerFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,13 +41,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_chats -> showChatsFragment()
                 R.id.nav_profile -> showProfileFragment(currentUser)
                 R.id.nav_achiev -> showAchievementsFragment()
-                else -> showBugTrackerFragment()
+                else -> showTrackerFragment()
             }
             return@setOnNavigationItemSelectedListener true
         }
         binding.navView.setOnNavigationItemReselectedListener {  }
 
-        showBugTrackerFragment()
+        showTrackerFragment()
     }
 
 
@@ -81,21 +83,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showAchievementsFragment() {
-//        supportFragmentManager.beginTransaction()
-//            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-//            .replace(R.id.container_main, ChatsFragment(), "achiev")
-//            .commitAllowingStateLoss()
-//
-//        binding.navView.visibility = View.VISIBLE
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+            .replace(R.id.container_main, AchievementsFragment(), "achiev")
+            .commitAllowingStateLoss()
+
+        binding.navView.visibility = View.VISIBLE
     }
 
-    fun showBugTrackerFragment() {
-//        supportFragmentManager.beginTransaction()
-//            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-//            .replace(R.id.container_main, ChatsFragment(), "tracker")
-//            .commitAllowingStateLoss()
-//
-//        binding.navView.visibility = View.VISIBLE
+    fun showTrackerFragment() {
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+            .replace(R.id.container_main, TrackerFragment(), "tracker")
+            .commitAllowingStateLoss()
+
+        binding.navView.visibility = View.VISIBLE
     }
 
     fun showShopFragment(){
