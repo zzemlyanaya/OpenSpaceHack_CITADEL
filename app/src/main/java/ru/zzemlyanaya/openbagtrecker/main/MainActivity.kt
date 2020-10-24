@@ -9,6 +9,7 @@ import ru.zzemlyanaya.openbagtrecker.R
 import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.ActivityMainBinding
 import ru.zzemlyanaya.openbagtrecker.main.chats.ChatsFragment
+import ru.zzemlyanaya.openbagtrecker.main.editprofile.EditProfileFragment
 import ru.zzemlyanaya.openbagtrecker.main.profile.ProfileFragment
 import ru.zzemlyanaya.openbagtrecker.main.shop.ShopFragment
 
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var currentUser: User
 
     private lateinit var binding: ActivityMainBinding
+
+    fun updateUser(user: User){
+        currentUser = user
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         when(fragment!!.tag) {
-            "shop" -> showProfileFragment(currentUser)
+            "shop", "edit_profile" -> showProfileFragment(currentUser)
             else -> {}
         }
     }
@@ -97,6 +102,15 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.container_main, ShopFragment(), "shop")
+            .commitAllowingStateLoss()
+
+        binding.navView.visibility = View.GONE
+    }
+
+    fun showEditProfileFragment(){
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.container_main, EditProfileFragment.newInstance(currentUser), "edit_profile")
             .commitAllowingStateLoss()
 
         binding.navView.visibility = View.GONE

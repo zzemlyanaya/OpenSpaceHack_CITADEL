@@ -23,7 +23,8 @@ class SignInViewModel : ViewModel() {
         emit(Resource.loading(data = null))
         if (id == "cita_del@citadel.ru".hashCode())
             emit(Resource.success(data =
-                User(0, "cita_del@citadel.ru", "CITADEL", 0, "CIT AD EL", "", 442)
+                User(0, "cita_del@citadel.ru", "CITADEL", 0, "CIT AD EL",
+                    "", 442, "Samsung S20 Note_Android 10|Google Pixel 3XL_Android 9.2")
             ))
         else
             emit(Resource.error(data = null, message = "Неверный email/пароль"))

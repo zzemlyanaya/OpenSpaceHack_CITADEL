@@ -47,6 +47,10 @@ class ProfileFragment : Fragment() {
             (requireActivity() as MainActivity).showShopFragment()
         }
 
+        binding.fabEditProfile.setOnClickListener {
+            (requireActivity() as MainActivity).showEditProfileFragment()
+        }
+
         return binding.root
     }
 

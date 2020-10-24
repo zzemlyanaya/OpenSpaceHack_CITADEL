@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".main.editprofile.EditProfileFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".main.editprofile.EditProfileFragment">
 
-</FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputFio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/fio"
+            android:textColorHint="@color/text_hint"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="2dp"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/color_error"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/butBackFromEdit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textFio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="true"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/butBackFromEdit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@android:color/transparent"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:tint="@color/accent_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/butBackFromEdit"
+            app:layout_constraintStart_toEndOf="@+id/butBackFromEdit"
+            app:layout_constraintTop_toTopOf="@+id/butBackFromEdit" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/devices"
+            android:textColor="@color/accent_blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/inputFio"
+            app:layout_constraintTop_toBottomOf="@+id/inputFio" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/devicesRecylcerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/inputFio"
+            app:layout_constraintStart_toStartOf="@+id/inputFio"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_device" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/butAddDevice"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_device"
+            app:icon="@drawable/ic_add_black"
+            app:iconPadding="8dp"
+            app:iconSize="18dp"
+            app:layout_constraintStart_toStartOf="@+id/devicesRecylcerView"
+            app:layout_constraintTop_toBottomOf="@+id/devicesRecylcerView" />
+
+        <Button
+            android:id="@+id/butSaveProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:insetTop="2dp"
+            android:insetBottom="2dp"
+            android:text="@string/save"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

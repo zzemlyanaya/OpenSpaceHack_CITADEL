@@ -24,6 +24,14 @@
     <string name="pirate">Искатель приключений</string>
 
     <string name="go2shop">В магическую лавку</string>
+    <string name="back">Обратно</string>
+
+    <string name="fio">ФИО</string>
+    <string name="devices">Ваши устройства</string>
+    <string name="add_device">Добавить</string>
+    <string name="save">Сохранить</string>
+    <string name="model">Модель</string>
+    <string name="os">Версия ОС</string>
 
     <string name="russian">Русский</string>
     <string name="english">English</string>
