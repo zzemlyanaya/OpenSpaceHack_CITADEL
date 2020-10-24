@@ -4,17 +4,26 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
+import ru.zzemlyanaya.openbagtrecker.Constants.USER
 import ru.zzemlyanaya.openbagtrecker.R
+import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.ActivityMainBinding
 import ru.zzemlyanaya.openbagtrecker.main.chats.ChatsFragment
+import ru.zzemlyanaya.openbagtrecker.main.profile.ProfileFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var currentUser: User
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        intent?.let {
+            currentUser = it.getSerializableExtra(USER) as User
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -30,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.navView.setOnNavigationItemReselectedListener {  }
 
-        showChatsFragment()
+        showBugTrackerFragment()
     }
 
 
@@ -57,12 +66,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showProfileFragment() {
-//        supportFragmentManager.beginTransaction()
-//            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-//            .replace(R.id.container_main, ChatsFragment(), "profile")
-//            .commitAllowingStateLoss()
-//
-//        binding.navView.visibility = View.VISIBLE
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+            .replace(R.id.container_main, ProfileFragment.newInstance(currentUser), "profile")
+            .commitAllowingStateLoss()
+
+        binding.navView.visibility = View.VISIBLE
     }
 
     fun showAchievementsFragment() {

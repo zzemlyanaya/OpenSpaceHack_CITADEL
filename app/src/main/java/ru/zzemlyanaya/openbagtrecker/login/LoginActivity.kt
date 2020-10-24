@@ -58,8 +58,7 @@ class LoginActivity : AppCompatActivity(), IOnLogin {
 
     private fun goOnMain(user: User) {
         val intent = Intent(this, MainActivity::class.java)
-        val bundle: Bundle = Bundle().apply { putSerializable(USER, user) }
-        intent.putExtra(USER, bundle)
+        intent.putExtra(USER, user)
         startActivity(intent)
         finish()
     }

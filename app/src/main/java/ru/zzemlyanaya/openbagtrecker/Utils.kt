@@ -10,6 +10,9 @@ interface IOnBack{
 
 object Constants {
     const val USER = "user"
+    const val WIZARD = 0
+    const val PIRATE = 1
+    const val ADMIN = 2
 
 }
 

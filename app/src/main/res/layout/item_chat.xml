@@ -18,7 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageViewOval"
-            app:srcCompat="@drawable/im_cat"
+            app:srcCompat="@drawable/ic_pirate"
             app:strokeColor="@color/text_light"
             app:strokeWidth="1.2dp" />
 

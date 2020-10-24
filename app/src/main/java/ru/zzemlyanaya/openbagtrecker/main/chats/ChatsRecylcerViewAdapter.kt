@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
 import ru.zzemlyanaya.openbagtrecker.R
+import kotlin.random.Random
 
 
 class ChatsRecyclerViewAdapter(
@@ -39,7 +40,10 @@ class ChatsRecyclerViewAdapter(
         val lastMessage: MaterialTextView = view.findViewById(R.id.textLastMes)
 
         init {
-            image.setImageResource(R.drawable.im_cat)
+            if(Random.nextInt()%2 == 0)
+                image.setImageResource(R.drawable.ic_wizard)
+            else
+                image.setImageResource(R.drawable.ic_pirate)
         }
 
     }
