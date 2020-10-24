@@ -10,6 +10,7 @@ import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.ActivityMainBinding
 import ru.zzemlyanaya.openbagtrecker.main.chats.ChatsFragment
 import ru.zzemlyanaya.openbagtrecker.main.profile.ProfileFragment
+import ru.zzemlyanaya.openbagtrecker.main.shop.ShopFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.nav_chats -> showChatsFragment()
-                R.id.nav_profile -> showProfileFragment()
+                R.id.nav_profile -> showProfileFragment(currentUser)
                 R.id.nav_achiev -> showAchievementsFragment()
                 else -> showBugTrackerFragment()
             }
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         when(fragment!!.tag) {
-            "chats" -> showChatsFragment()
+            "shop" -> showProfileFragment(currentUser)
             else -> {}
         }
     }
@@ -65,10 +66,10 @@ class MainActivity : AppCompatActivity() {
         binding.navView.visibility = View.VISIBLE
     }
 
-    fun showProfileFragment() {
+    fun showProfileFragment(user: User) {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-            .replace(R.id.container_main, ProfileFragment.newInstance(currentUser), "profile")
+            .replace(R.id.container_main, ProfileFragment.newInstance(user), "profile")
             .commitAllowingStateLoss()
 
         binding.navView.visibility = View.VISIBLE
@@ -90,6 +91,15 @@ class MainActivity : AppCompatActivity() {
 //            .commitAllowingStateLoss()
 //
 //        binding.navView.visibility = View.VISIBLE
+    }
+
+    fun showShopFragment(){
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.container_main, ShopFragment(), "shop")
+            .commitAllowingStateLoss()
+
+        binding.navView.visibility = View.GONE
     }
 
 }

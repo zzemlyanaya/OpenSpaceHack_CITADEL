@@ -4,21 +4,25 @@
     <item
         android:id="@+id/nav_tracker"
         android:icon="@drawable/ic_bugs"
-        android:title="@string/empty_string"/>
+        android:title="@string/empty_string"
+        android:iconTint="@color/accent_blue"/>
 
     <item
         android:id="@+id/nav_chats"
         android:icon="@drawable/ic_chat"
-        android:title="@string/empty_string"/>
+        android:title="@string/empty_string"
+        android:iconTint="@color/accent_blue"/>
 
     <item
         android:id="@+id/nav_achiev"
         android:icon="@drawable/ic_achievement"
-        android:title="@string/empty_string"/>
+        android:title="@string/empty_string"
+        android:iconTint="@color/accent_blue"/>
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile"
-        android:title="@string/empty_string"/>
+        android:title="@string/empty_string"
+        android:iconTint="@color/accent_blue"/>
 
 </menu>

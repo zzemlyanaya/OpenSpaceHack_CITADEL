@@ -11,6 +11,7 @@ import ru.zzemlyanaya.openbagtrecker.Constants.WIZARD
 import ru.zzemlyanaya.openbagtrecker.R
 import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.FragmentProfileBinding
+import ru.zzemlyanaya.openbagtrecker.main.MainActivity
 
 class ProfileFragment : Fragment() {
 
@@ -40,6 +41,10 @@ class ProfileFragment : Fragment() {
                 binding.textProfileStatus.text = getString(R.string.pirate)
                 binding.profileImage.setImageResource(R.drawable.ic_pirate)
             }
+        }
+
+        binding.butGo2Shop.setOnClickListener {
+            (requireActivity() as MainActivity).showShopFragment()
         }
 
         return binding.root
