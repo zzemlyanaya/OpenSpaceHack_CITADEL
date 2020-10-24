@@ -3,53 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewmodel"
+            type="ru.zzemlyanaya.openbagtrecker.login.signin.SignInViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/butSignIn"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@android:color/transparent"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="@string/sign_in"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textSize="18sp"
-            android:visibility="visible"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/inputPasswordLogin"
-            app:layout_constraintStart_toStartOf="@+id/inputPasswordLogin"
-            app:layout_constraintTop_toBottomOf="@+id/checkKeepLogin"
-            app:rippleColor="@color/white"
-            app:strokeColor="@color/white"
-            app:strokeWidth="2dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonBack1"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:clickable="false"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:visibility="visible"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/inputPasswordLogin"
-            app:layout_constraintStart_toStartOf="@+id/inputPasswordLogin"
-            app:layout_constraintTop_toBottomOf="@+id/checkKeepLogin"
-            app:strokeColor="@color/accent_red"
-            app:strokeWidth="2dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLogin"
@@ -68,8 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/ic_mail_outlined"
-            app:startIconTint="@color/accent_red">
+            app:startIconDrawable="@drawable/ic_mail_outlined">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textLogin"
@@ -77,17 +38,14 @@
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/ripple_red"
-                android:textColorLink="@color/ripple_red" />
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputPasswordLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:alpha="1"
             android:hint="@string/prompt_password"
             android:textColorHint="@color/text_dark"
@@ -100,8 +58,7 @@
             app:layout_constraintStart_toStartOf="@+id/inputLogin"
             app:layout_constraintTop_toBottomOf="@+id/inputLogin"
             app:passwordToggleEnabled="true"
-            app:startIconDrawable="@drawable/ic_key_outlined"
-            app:startIconTint="@color/accent_red">
+            app:startIconDrawable="@drawable/ic_key_outlined">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textPasswordLogin"
@@ -109,12 +66,8 @@
                 android:layout_height="match_parent"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:paddingStart="28dp"
                 android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/ripple_red"
-                android:textColorLink="@color/ripple_red" />
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
@@ -123,25 +76,41 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:indeterminate="true"
-            android:indeterminateTint="@color/accent_red"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonBack1"
+            app:layout_constraintBottom_toBottomOf="@+id/butSignIn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/buttonBack1" />
+            app:layout_constraintTop_toTopOf="@+id/butSignIn" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkKeepLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:buttonTint="@color/accent_red"
+            android:buttonTint="@color/accent_blue"
             android:checked="true"
+            android:fontFamily="monospace"
             android:text="@string/keep_login"
-            android:textColorHighlight="@color/ripple_red"
-            android:textColorLink="@color/ripple_red"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="@+id/inputPasswordLogin"
             app:layout_constraintTop_toBottomOf="@+id/inputPasswordLogin" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/butSignIn"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:enabled="@{viewmodel.signInFormState.dataValid ? true : false}"
+            android:text="@string/lets_go"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/inputPasswordLogin"
+            app:layout_constraintStart_toStartOf="@+id/inputPasswordLogin"
+            app:layout_constraintTop_toBottomOf="@+id/checkKeepLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

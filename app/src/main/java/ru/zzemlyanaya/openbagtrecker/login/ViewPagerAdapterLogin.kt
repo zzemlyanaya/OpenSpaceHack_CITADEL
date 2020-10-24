@@ -14,7 +14,7 @@ class ViewPagerAdapterLogin(activity: AppCompatActivity, private val itemsCount:
     }
 
     override fun createFragment(position: Int) = when(position) {
-        0 ->  SignInFragment()
+        0 ->  SignInFragment.newInstance()
         else -> SignUpFragment()
     }
 }

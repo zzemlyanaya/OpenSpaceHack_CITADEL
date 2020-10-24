@@ -4,14 +4,16 @@
 
     <string name="sign_up">Создать</string>
     <string name="sign_in">Войти</string>
+    <string name="lets_go">Вперёд!</string>
     <string name="keep_login">Запомнить меня</string>
-    <string name="create_account">Создать аккаунт</string>
+    <string name="create_account">Начать приключение</string>
     <string name="invalid_username">Имя не может быть пустым</string>
     <string name="invalid_email">Некорректный email</string>
     <string name="invalid_password">Пароль должен содержать как минимум 8 символов</string>
     <string name="login_failed">Не удалось войти. Попробуйте снова?</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Пароль</string>
+    <string name="prompt_username">Имя персонажа</string>
     <string name="connecting">Соединяем с сервером…</string>
     <string name="connection_failed">Что-то пошло не так. Нажмите для повторного подключения.</string>
     <string name="connection_on_list">Не удалось подключиться к серверу. Проверьте соединениние.</string>

@@ -1,14 +1,19 @@
 package ru.zzemlyanaya.openbagtrecker.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
+import ru.zzemlyanaya.openbagtrecker.Constants.USER
 import ru.zzemlyanaya.openbagtrecker.R
+import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.ActivityLoginBinding
+import ru.zzemlyanaya.openbagtrecker.login.signin.IOnLogin
+import ru.zzemlyanaya.openbagtrecker.main.MainActivity
 
-class LoginActivity : AppCompatActivity(){
+class LoginActivity : AppCompatActivity(), IOnLogin {
 
     private lateinit var binding: ActivityLoginBinding
 
@@ -51,8 +56,16 @@ class LoginActivity : AppCompatActivity(){
         }
     }
 
-    private fun goOnMain() {
-       //TODO("Go on main w/ user")
+    private fun goOnMain(user: User) {
+        val intent = Intent(this, MainActivity::class.java)
+        val bundle: Bundle = Bundle().apply { putSerializable(USER, user) }
+        intent.putExtra(USER, bundle)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onLogin(user: User) {
+        goOnMain(user)
     }
 
 }

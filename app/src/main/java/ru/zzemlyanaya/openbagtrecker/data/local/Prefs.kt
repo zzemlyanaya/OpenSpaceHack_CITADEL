@@ -4,10 +4,10 @@ import com.kryptoprefs.context.KryptoContext
 import com.kryptoprefs.preferences.KryptoPrefs
 
 object PrefsConst {
-    const val PREFS_NAME = "RISEPrefs"
-    const val PREF_KEEP_LOGGIN = "keep loggin"
+    const val PREFS_NAME = "OpenSpacePrefs"
+    const val PREF_KEEP_LOGGIN = "keep sign in"
     const val PREF_LANGUAGE = "language"
-    const val PREF_NOTIFICATIONS = "notofications"
+    const val PREF_NOTIFICATIONS = "notifications"
     const val PREF_USER_AUTH = "user auth"
 }
 

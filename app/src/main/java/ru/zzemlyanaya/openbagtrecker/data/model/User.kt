@@ -2,6 +2,7 @@ package ru.zzemlyanaya.openbagtrecker.data.model
 
 import androidx.annotation.NonNull
 import org.json.JSONObject
+import java.io.Serializable
 
 
 data class User(
@@ -12,13 +13,9 @@ data class User(
     @NonNull
     var name: String,
     @NonNull
-    var type: Int, //1 = person, 0 = company
-    var city: String?,
-    var country: String?,
-    var about: String?
-) {
+    var type: Int, //1 = person, 0 = company, 2 = admin
+) : Serializable {
     fun toJSON() = JSONObject(
-        mapOf("userId" to userId, "email" to email, "name" to name, "type" to type,
-        "city" to city, "country" to country, "about" to about)
+        mapOf("userId" to userId, "email" to email, "name" to name, "type" to type)
     )
 }
