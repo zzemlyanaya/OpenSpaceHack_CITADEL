@@ -34,7 +34,7 @@
     </style>
 
     <style name="TILStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="hintTextColor">@color/text_dark</item>
+        <item name="hintTextColor">@color/text_hint</item>
         <item name="boxCornerRadiusBottomStart">10dp</item>
         <item name="boxCornerRadiusBottomEnd">10dp</item>
         <item name="boxCornerRadiusTopStart">10dp</item>

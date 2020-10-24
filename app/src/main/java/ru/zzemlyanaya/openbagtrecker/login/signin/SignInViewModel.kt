@@ -21,6 +21,10 @@ class SignInViewModel : ViewModel() {
     fun authorize(id: Int, password: String, isKeepLogin: Boolean) = liveData(Dispatchers.IO) {
 //        saveLogin(isKeepLogin, id, password.hashCode())
         emit(Resource.loading(data = null))
+        if (id == "cita_del@citadel.ru".hashCode())
+            emit(Resource.success(data = User(0, "cita_del@citadel.ru", "CITADEL", 0)))
+        else
+            emit(Resource.error(data = null, message = "Неверный email/пароль"))
 //        try {
 //            val result: Result<User> = repository.authorize(id, password.hashCode(), isKeepLogin)
 //            if (result.error == null)
@@ -30,7 +34,6 @@ class SignInViewModel : ViewModel() {
 //        } catch (e: Exception) {
 //            emit(Resource.error(data = null, message = e.message ?: "Ошибка сервера! Попробуйте снова."))
 //        }
-        emit(Resource.success(data = User(0, "citadel@cita.del", "CITADEL", 0)))
     }
 
     private fun saveLogin(isKeep: Boolean, id: Int, passHash: Int){

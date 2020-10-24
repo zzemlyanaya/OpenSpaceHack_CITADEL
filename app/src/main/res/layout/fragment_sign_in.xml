@@ -20,7 +20,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:hint="@string/prompt_email"
-            android:textColorHint="@color/text_dark"
+            android:textColorHint="@color/text_hint"
             app:boxBackgroundMode="outline"
             app:boxStrokeWidth="2dp"
             app:errorEnabled="true"
@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/ic_mail_outlined">
+            app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textLogin"
@@ -48,7 +48,7 @@
             android:layout_marginTop="4dp"
             android:alpha="1"
             android:hint="@string/prompt_password"
-            android:textColorHint="@color/text_dark"
+            android:textColorHint="@color/text_hint"
             app:boxStrokeWidth="2dp"
             app:errorEnabled="true"
             app:errorTextColor="@color/color_error"

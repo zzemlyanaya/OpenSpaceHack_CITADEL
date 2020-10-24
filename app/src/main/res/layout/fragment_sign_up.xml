@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:hint="@string/prompt_email"
-                android:textColorHint="@color/text_dark"
+                android:textColorHint="@color/text_hint"
                 app:boxStrokeWidth="2dp"
                 app:errorEnabled="true"
                 app:errorTextColor="@color/color_error"
@@ -33,7 +33,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_mail_outlined">
+                app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textEmail"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:hint="@string/prompt_username"
-                android:textColorHint="@color/text_dark"
+                android:textColorHint="@color/text_hint"
                 app:boxStrokeWidth="2dp"
                 app:errorEnabled="true"
                 app:errorTextColor="@color/color_error"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:hint="@string/prompt_password"
-                android:textColorHint="@color/text_dark"
+                android:textColorHint="@color/text_hint"
                 app:boxStrokeWidth="2dp"
                 app:errorEnabled="true"
                 app:errorTextColor="@color/color_error"
@@ -136,7 +136,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/personal_data"
-                android:textColor="@color/text_dark"
+                android:textColor="@color/text_hint"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
