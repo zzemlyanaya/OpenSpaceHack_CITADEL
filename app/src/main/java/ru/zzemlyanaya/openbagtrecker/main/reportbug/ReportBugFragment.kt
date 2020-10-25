@@ -21,6 +21,8 @@ class ReportBugFragment : Fragment() {
 
     private lateinit var user: User
 
+    //TODO("add fromState&validator")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -47,10 +49,12 @@ class ReportBugFragment : Fragment() {
 
         binding.butSendReport.setOnClickListener {
             //viewModel.sendReport(Bug(...))
-            if (user.achievements.isBlank()) {
-                user.achievements = "Первые шаги_1"
-                showCongrats("Первые шаги")
+            if (user.achievements.contains("Первые шаги_1")) {
+                user.achievements = user.achievements.replace("Первые шаги_1", "Первые шаги_2")
+                (requireActivity() as MainActivity).updateUser(user)
+                showCongrats("Первые шаги lvl. 2")
             }
+            //TODO("check for other achievements")
             AlertDialog.Builder(requireContext())
                 .setTitle(getString(R.string.magical))
                 .setIcon(R.drawable.ic_bug)
@@ -58,6 +62,7 @@ class ReportBugFragment : Fragment() {
                 .setPositiveButton("OK") { dialog, _ -> run { dialog.cancel() } }
                 .create()
                 .show()
+
 
             (requireActivity() as MainActivity).onBackPressed()
         }

@@ -38,12 +38,7 @@ class LeaderboardRecyclerViewAdapter(private val values: List<UserShortView>)
     }
 
     override fun getItemCount(): Int = values.size
-//
-//    fun setData(data: List<Project>){
-//        values.clear()
-//        values.addAll(data)
-//        notifyDataSetChanged()
-//    }
+
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val number: TextView = view.findViewById(R.id.textNumber)

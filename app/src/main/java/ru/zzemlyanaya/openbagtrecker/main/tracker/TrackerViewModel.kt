@@ -16,14 +16,17 @@ class TrackerViewModel : ViewModel() {
     private val list = listOf(
         Bug(0, 0, "CITADEL", 0, "Security", "12.10.20", "12:22", "CIT AD EL",
             "Google Pixel 3XL", "Android 10", "v12.2.45",
-            "Personal Data Visibility", "Open profile"),
+            "Видно персональные данные", "Open profile"),
         Bug(1, 1, "OpenSpace Bank",0, "Spelling", "6.10.20", "07:20", "Open Space Bank",
             "Samsung S20", "Android 9", "v12.2.45",
-            "Spelling Mistake", "In the 2nd settings"),
+            "Опечатка в настройках", "In the 2nd settings"),
         Bug(2, 3, "Oreo", 1, "Minor", "9.11.20", "18:34", "One More FIO",
             "Xiomi Mi7 Pro", "Android 7.1.1", "v12.2.47",
-            "Blocker", "When opening stories"
-        ))
+            "Истории не закрываются и блокируют приложение", "When opening stories"),
+        Bug(3, 2, "Fus Ro Da", 1, "Major", "14.11.20", "13:27", "One More FIO",
+            "Xiomi Mi9", "Android 7.1.1", "v12.2.47",
+            "При смены пароля исчезают сохранённые истории ", "When changing the password")
+    )
 
     fun fetchTop3LeaderBoard() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))

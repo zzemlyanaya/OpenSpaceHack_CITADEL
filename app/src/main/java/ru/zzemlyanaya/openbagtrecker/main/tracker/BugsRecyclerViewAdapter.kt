@@ -34,12 +34,7 @@ class BugsRecyclerViewAdapter(private val values: List<Bug>)
     }
 
     override fun getItemCount(): Int = values.size
-//
-//    fun setData(data: List<Project>){
-//        values.clear()
-//        values.addAll(data)
-//        notifyDataSetChanged()
-//    }
+
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val authorName: TextView = view.findViewById(R.id.textBugAuthor)

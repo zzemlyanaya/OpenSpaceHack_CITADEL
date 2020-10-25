@@ -55,6 +55,8 @@
     <string name="congrats">Поздравляем!</string>
     <string name="achiev">У вас новое достижение:\n</string>
 
+    <string name="acheivs">Ваши достижения</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>>
 

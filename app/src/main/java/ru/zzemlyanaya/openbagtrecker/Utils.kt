@@ -23,6 +23,7 @@ interface IOnBack{
 object Constants {
     const val USER = "user"
     const val COINS = "coins"
+    const val LIST = "list"
     const val WIZARD = 0
     const val PIRATE = 1
     const val ADMIN = 2

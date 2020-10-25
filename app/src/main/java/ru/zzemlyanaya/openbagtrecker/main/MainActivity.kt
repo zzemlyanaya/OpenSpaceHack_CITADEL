@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     fun showAchievementsFragment() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-            .replace(R.id.container_main, AchievementsFragment(), "achiev")
+            .replace(R.id.container_main, AchievementsFragment.newInstance(currentUser.achievements), "achiev")
             .commitAllowingStateLoss()
 
         binding.navView.visibility = View.VISIBLE
