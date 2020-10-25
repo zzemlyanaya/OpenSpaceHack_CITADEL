@@ -12,6 +12,7 @@ import androidx.annotation.NonNull
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import ru.zzemlyanaya.openbagtrecker.data.model.Device
 import kotlin.Float as Float1
 
 
@@ -136,4 +137,16 @@ abstract class SwipeToDeleteCallback internal constructor(context: Context) :
         mClearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
         editDrawable = getDrawable(mContext, R.drawable.ic_edit) as VectorDrawable
     }
+}
+
+fun getDevicesFromString(str: String) = str.split('|').map {
+    Device(it.split('_')[0], it.split('_')[1])
+}
+
+fun getStringWithDevices(list: List<Device>): String {
+    val s = StringBuilder()
+    list.forEach {
+        s.append("${it.model}_${it.os}")
+    }
+    return s.toString()
 }

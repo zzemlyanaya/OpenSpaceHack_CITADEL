@@ -222,7 +222,7 @@
                 app:layout_constraintStart_toStartOf="@+id/inputName"
                 app:layout_constraintTop_toBottomOf="@+id/inputName"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/icon_grey"
+                app:passwordToggleTint="@color/blue_light"
                 app:startIconDrawable="@drawable/ic_key_outlined">
 
                 <com.google.android.material.textfield.TextInputEditText

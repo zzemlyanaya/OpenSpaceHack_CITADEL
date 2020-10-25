@@ -7,10 +7,8 @@
         <item name="colorPrimary">@color/accent_blue</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorOnSurface">@color/accent_blue</item>
-
-        <item name="android:statusBarColor">@color/app_background</item>
         <item name="rippleColor">@color/blue_light</item>
-
+        <item name="android:statusBarColor">@color/blue_light</item>
         <item name="materialButtonStyle">@style/ButtonStyle</item>
         <item name="textInputStyle">@style/TILStyle</item>
 
@@ -45,7 +43,6 @@
     </style>
 
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundColor">@color/button_background</item>
         <item name="android:textColor">@color/white</item>
         <item name="cornerRadius">10dp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>

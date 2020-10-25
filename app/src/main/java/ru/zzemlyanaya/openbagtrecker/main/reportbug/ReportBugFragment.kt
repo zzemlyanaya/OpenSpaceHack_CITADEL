@@ -1,32 +1,30 @@
 package ru.zzemlyanaya.openbagtrecker.main.reportbug
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import ru.zzemlyanaya.openbagtrecker.Constants.USER
 import ru.zzemlyanaya.openbagtrecker.R
+import ru.zzemlyanaya.openbagtrecker.data.model.User
+import ru.zzemlyanaya.openbagtrecker.databinding.FragmentReportBugBinding
+import ru.zzemlyanaya.openbagtrecker.getDevicesFromString
+import ru.zzemlyanaya.openbagtrecker.main.MainActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ReportBugFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReportBugFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            user = it.getSerializable(USER) as User
         }
     }
 
@@ -34,26 +32,58 @@ class ReportBugFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_report_bug, container, false)
+        val binding: FragmentReportBugBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_report_bug, container, false)
+
+        binding.butAddScreens.setOnClickListener {
+            addScreens()
+        }
+
+        val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            requireContext(), android.R.layout.simple_spinner_item,
+            getDevicesFromString(user.devices).map { "${it.model} / ${it.os}" }
+        )
+        binding.spinDevice.adapter = spinnerArrayAdapter
+
+        binding.butSendReport.setOnClickListener {
+            //viewModel.sendReport(Bug(...))
+            if (user.achievements.isBlank()) {
+                user.achievements = "Первые шаги_1"
+                showCongrats("Первые шаги")
+            }
+            AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.magical))
+                .setIcon(R.drawable.ic_bug)
+                .setMessage(getString(R.string.report_succes))
+                .setPositiveButton("OK") { dialog, _ -> run { dialog.cancel() } }
+                .create()
+                .show()
+
+            (requireActivity() as MainActivity).onBackPressed()
+        }
+        return binding.root
+    }
+
+    private fun showCongrats(achiev: String){
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.congrats))
+            .setIcon(R.drawable.ic_trophy)
+            .setMessage(getString(R.string.achiev)+achiev)
+            .setPositiveButton("Ура!") { dialog, _ -> run { dialog.cancel() } }
+            .create()
+            .show()
+    }
+
+    private fun addScreens(){
+        Toast.makeText(requireContext(), getString(R.string.no_function), Toast.LENGTH_SHORT).show()
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReportBugFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(user: User) =
             ReportBugFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putSerializable(USER, user)
                 }
             }
     }

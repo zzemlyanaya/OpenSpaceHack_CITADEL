@@ -21,6 +21,8 @@ import ru.zzemlyanaya.openbagtrecker.SwipeToDeleteCallback
 import ru.zzemlyanaya.openbagtrecker.data.model.Device
 import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.FragmentEditProfileBinding
+import ru.zzemlyanaya.openbagtrecker.getDevicesFromString
+import ru.zzemlyanaya.openbagtrecker.getStringWithDevices
 import ru.zzemlyanaya.openbagtrecker.main.MainActivity
 
 class EditProfileFragment : Fragment() {
@@ -77,17 +79,6 @@ class EditProfileFragment : Fragment() {
         return binding.root
     }
 
-    private fun getDevicesFromString(str: String) = str.split('|').map {
-        Device(it.split('_')[0], it.split('_')[1])
-    }
-
-    private fun getStringWithDevices(list: List<Device>): String {
-        val s = StringBuilder()
-        list.forEach {
-            s.append("${it.model}_${it.os}")
-        }
-        return s.toString()
-    }
 
     private fun enableSwipeToEditAndUndo() {
         val swipeToDeleteCallback: SwipeToDeleteCallback = object : SwipeToDeleteCallback(recyclerView.context) {

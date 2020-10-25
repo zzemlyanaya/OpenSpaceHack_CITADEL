@@ -19,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageViewOval"
             app:srcCompat="@drawable/ic_pirate"
-            app:strokeColor="@color/text_light"
+            app:strokeColor="@color/app_background"
             app:strokeWidth="1.2dp" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -46,22 +46,6 @@
             app:layout_constraintStart_toStartOf="@+id/textFrom"
             app:layout_constraintTop_toBottomOf="@+id/textFrom"
             tools:text="Last message about something" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/userStatus"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginBottom="16dp"
-            android:padding="3dp"
-            android:scaleType="centerInside"
-            android:tint="@color/green_light"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/chatImage"
-            app:shapeAppearanceOverlay="@style/roundedImageViewOval"
-            app:srcCompat="@drawable/ic_dot"
-            app:strokeColor="@color/app_background"
-            app:strokeWidth="3dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import ru.zzemlyanaya.openbagtrecker.main.achiev.AchievementsFragment
 import ru.zzemlyanaya.openbagtrecker.main.chats.ChatsFragment
 import ru.zzemlyanaya.openbagtrecker.main.editprofile.EditProfileFragment
 import ru.zzemlyanaya.openbagtrecker.main.profile.ProfileFragment
+import ru.zzemlyanaya.openbagtrecker.main.reportbug.ReportBugFragment
 import ru.zzemlyanaya.openbagtrecker.main.shop.ShopFragment
 import ru.zzemlyanaya.openbagtrecker.main.tracker.TrackerFragment
 
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         when(fragment!!.tag) {
             "shop", "edit_profile" -> showProfileFragment(currentUser)
+            "report_bug" -> showTrackerFragment()
             else -> {}
         }
     }
@@ -113,6 +115,15 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .replace(R.id.container_main, EditProfileFragment.newInstance(currentUser), "edit_profile")
+            .commitAllowingStateLoss()
+
+        binding.navView.visibility = View.GONE
+    }
+
+    fun showReportBugFragment(){
+        supportFragmentManager.beginTransaction()
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .replace(R.id.container_main, ReportBugFragment.newInstance(currentUser), "report_bug")
             .commitAllowingStateLoss()
 
         binding.navView.visibility = View.GONE

@@ -17,6 +17,7 @@ import ru.zzemlyanaya.openbagtrecker.data.model.Bug
 import ru.zzemlyanaya.openbagtrecker.data.model.Resource
 import ru.zzemlyanaya.openbagtrecker.data.model.UserShortView
 import ru.zzemlyanaya.openbagtrecker.databinding.FragmentTrackerBinding
+import ru.zzemlyanaya.openbagtrecker.main.MainActivity
 
 
 class TrackerFragment : Fragment() {
@@ -54,6 +55,10 @@ class TrackerFragment : Fragment() {
 
         binding.leaderboardCard.setOnClickListener {
             go2Leaderboard()
+        }
+
+        binding.fabReport.setOnClickListener {
+            (requireActivity() as MainActivity).showReportBugFragment()
         }
 
         return binding.root

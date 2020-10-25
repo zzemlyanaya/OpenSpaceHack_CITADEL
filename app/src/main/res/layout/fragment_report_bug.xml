@@ -1,14 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".main.reportbug.ReportBugFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".main.reportbug.ReportBugFragment">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/butAddScreens"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="168dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/add_screen"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="18sp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_gallery"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/blue_light"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputBugName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="@string/bug_name"
+                android:textColorHint="@color/text_hint"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="@+id/butAddScreens"
+                app:layout_constraintStart_toStartOf="@+id/butAddScreens"
+                app:layout_constraintTop_toBottomOf="@+id/butAddScreens">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textBugName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textShortMessage|textCapSentences"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputSteps"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/bug_descr"
+                android:textColorHint="@color/text_hint"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="@+id/inputBugName"
+                app:layout_constraintStart_toStartOf="@+id/inputBugName"
+                app:layout_constraintTop_toBottomOf="@+id/inputBugName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textSteps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textLongMessage|textMultiLine|textCapSentences|textImeMultiLine"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/bug_type"
+                android:textColor="@color/accent_blue"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/inputSteps"
+                app:layout_constraintTop_toBottomOf="@+id/inputSteps" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/device"
+                android:textColor="@color/accent_blue"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <Spinner
+                android:id="@+id/spinBugType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:entries="@array/bug_types"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinDevice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                app:layout_constraintEnd_toEndOf="@+id/inputSteps"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/butSendReport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="32dp"
+                android:insetTop="2dp"
+                android:insetBottom="2dp"
+                android:text="@string/send"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/inputSteps"
+                app:layout_constraintStart_toStartOf="@+id/inputSteps"
+                app:layout_constraintTop_toBottomOf="@+id/inputAppVersion" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputAppVersion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/app_version"
+                android:textColorHint="@color/text_hint"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="@+id/inputSteps"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/spinDevice">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textAppVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textShortMessage"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

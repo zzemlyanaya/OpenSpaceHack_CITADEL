@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedImageViewOval"
             app:srcCompat="@drawable/ic_wizard"
-            app:strokeColor="@color/text_light"
+            app:strokeColor="@color/app_background"
             app:strokeWidth="1.2dp" />
 
         <TextView
