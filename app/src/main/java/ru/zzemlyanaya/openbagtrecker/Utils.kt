@@ -12,6 +12,7 @@ import androidx.annotation.NonNull
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import ru.zzemlyanaya.openbagtrecker.data.model.Achievement
 import ru.zzemlyanaya.openbagtrecker.data.model.Device
 import kotlin.Float as Float1
 
@@ -151,3 +152,9 @@ fun getStringWithDevices(list: List<Device>): String {
     }
     return s.toString()
 }
+
+fun getAchievListFromString(str: String) = if (str.isBlank()) emptyList()
+else str.split('|').map {
+    Achievement(it.split('_')[0], it.split('_')[1].toInt())
+}
+

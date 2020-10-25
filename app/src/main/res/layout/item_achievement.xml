@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/star3"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
             android:alpha="0.32"
@@ -27,8 +27,8 @@
 
         <ImageView
             android:id="@+id/star"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="4dp"
             android:alpha="0.32"
             app:layout_constraintEnd_toStartOf="@+id/star2"
@@ -37,8 +37,8 @@
 
         <ImageView
             android:id="@+id/star2"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="4dp"
             android:alpha="0.32"
             app:layout_constraintEnd_toStartOf="@+id/star3"
@@ -47,8 +47,8 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -63,6 +63,7 @@
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="16dp"
             android:text="Some short name"
             android:textColor="@color/black"
             app:autoSizeMaxTextSize="17sp"

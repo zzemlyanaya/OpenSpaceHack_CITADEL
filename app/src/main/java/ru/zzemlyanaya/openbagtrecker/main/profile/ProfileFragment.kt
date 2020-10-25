@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import ru.zzemlyanaya.openbagtrecker.Constants.USER
 import ru.zzemlyanaya.openbagtrecker.Constants.WIZARD
 import ru.zzemlyanaya.openbagtrecker.R
 import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.FragmentProfileBinding
+import ru.zzemlyanaya.openbagtrecker.getAchievListFromString
 import ru.zzemlyanaya.openbagtrecker.main.MainActivity
+import ru.zzemlyanaya.openbagtrecker.main.achiev.AchievRecyclerViewAdapter
 
 class ProfileFragment : Fragment() {
 
@@ -50,6 +53,12 @@ class ProfileFragment : Fragment() {
 
         binding.fabEditProfile.setOnClickListener {
             (requireActivity() as MainActivity).showEditProfileFragment()
+        }
+
+        val recyclerView = binding.achievRecyclerProfile.achievRecyclerView
+        with(recyclerView){
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = AchievRecyclerViewAdapter(getAchievListFromString(user.achievements).subList(0, 2))
         }
 
         return binding.root

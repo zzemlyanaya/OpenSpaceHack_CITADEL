@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.zzemlyanaya.openbagtrecker.Constants.LIST
 import ru.zzemlyanaya.openbagtrecker.R
-import ru.zzemlyanaya.openbagtrecker.data.model.Achievement
 import ru.zzemlyanaya.openbagtrecker.databinding.FragmentAchievementsBinding
+import ru.zzemlyanaya.openbagtrecker.getAchievListFromString
 
 class AchievementsFragment : Fragment() {
 
@@ -33,18 +33,13 @@ class AchievementsFragment : Fragment() {
         val binding: FragmentAchievementsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_achievements, container, false)
 
-        recyclerView = binding.achievRecyclerView
+        recyclerView = binding.achievRecyclerView.achievRecyclerView
         with(recyclerView){
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = AchievRecyclerViewAdapter(getListFromString(data))
+            adapter = AchievRecyclerViewAdapter(getAchievListFromString(data))
         }
 
         return binding.root
-    }
-
-    private fun getListFromString(str: String) = if (str.isBlank()) emptyList()
-    else str.split('|').map {
-        Achievement(it.split('_')[0], it.split('_')[1].toInt())
     }
 
     companion object {
