@@ -30,6 +30,7 @@ class EditProfileFragment : Fragment() {
     private lateinit var user: User
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: DevicesRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,11 +65,14 @@ class EditProfileFragment : Fragment() {
         animator.removeDuration = 400
         animator.moveDuration = 400
 
+        adapter = DevicesRecyclerViewAdapter(getDevicesFromString(user.devices) as ArrayList<Device>)
+
         with(recyclerView){
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = DevicesRecyclerViewAdapter(getDevicesFromString(user.devices) as ArrayList<Device>)
+            adapter = this@EditProfileFragment.adapter
             itemAnimator = animator
         }
+
 
         enableSwipeToEditAndUndo()
 
@@ -84,8 +88,8 @@ class EditProfileFragment : Fragment() {
         val swipeToDeleteCallback: SwipeToDeleteCallback = object : SwipeToDeleteCallback(recyclerView.context) {
             override fun onSwiped(@NonNull viewHolder: RecyclerView.ViewHolder, i: Int) {
                 val position = viewHolder.adapterPosition
-                val item: Device = (recyclerView.adapter as DevicesRecyclerViewAdapter).getData()[position]
-                (recyclerView.adapter as DevicesRecyclerViewAdapter).removeItem(position)
+                val item: Device = adapter.getData()[position]
+                adapter.removeItem(position)
                 view?.let { createEditDialog(item, position).show() }
             }
         }
@@ -111,7 +115,9 @@ class EditProfileFragment : Fragment() {
                         throw Exception("Заполните все поля!")
 
                     val device = Device(model, os)
-                    (recyclerView.adapter as DevicesRecyclerViewAdapter).addItem(device)
+                    adapter.addItem(device)
+                    recyclerView.adapter = adapter
+
                 } catch (e: Exception) {
                     showError(e.message.orEmpty())
                 }
@@ -141,28 +147,28 @@ class EditProfileFragment : Fragment() {
                         throw Exception("Заполните все поля!")
 
                     val deviceNew = Device(model, os)
-                    (recyclerView.adapter as DevicesRecyclerViewAdapter).restoreItem(deviceNew, position)
+                    adapter.restoreItem(deviceNew, position)
                 } catch (e: Exception) {
                     showError(e.message.orEmpty())
                 }
 
             }
             .setNegativeButton("Отмена") {_, _ ->
-                (recyclerView.adapter as DevicesRecyclerViewAdapter).restoreItem(device, position)
+                adapter.restoreItem(device, position)
                 recyclerView.scrollToPosition(position)
             }
             .setNegativeButton(
                 "Удалить"
             ) {_, _ ->
-                (recyclerView.adapter as DevicesRecyclerViewAdapter).removeItem(position)
                 Snackbar
                     .make(recyclerView, "Устройство удалено", Snackbar.LENGTH_SHORT)
                     .setAction(
                         "ВЕРНУТЬ"
                     )  {
-                        (recyclerView.adapter as DevicesRecyclerViewAdapter).restoreItem(device, position)
+                        adapter.restoreItem(device, position)
                         recyclerView.scrollToPosition(position)
                     }
+                    .setBackgroundTint(resources.getColor(R.color.second_text_dark))
                     .setActionTextColor(resources.getColor(R.color.accent_blue))
                     .show()
             }

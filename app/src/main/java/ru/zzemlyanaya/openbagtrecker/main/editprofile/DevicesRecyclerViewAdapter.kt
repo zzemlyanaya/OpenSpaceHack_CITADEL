@@ -31,6 +31,7 @@ class DevicesRecyclerViewAdapter(
     fun setData(list: List<Device>){
         values.clear()
         values.addAll(list)
+        notifyDataSetChanged()
     }
 
     fun removeItem(position: Int){
