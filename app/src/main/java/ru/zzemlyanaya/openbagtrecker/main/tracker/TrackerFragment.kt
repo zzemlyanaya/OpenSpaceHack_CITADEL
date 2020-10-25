@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.zzemlyanaya.openbagtrecker.R
 import ru.zzemlyanaya.openbagtrecker.Status
+import ru.zzemlyanaya.openbagtrecker.data.model.Bug
 import ru.zzemlyanaya.openbagtrecker.data.model.Resource
 import ru.zzemlyanaya.openbagtrecker.data.model.UserShortView
 import ru.zzemlyanaya.openbagtrecker.databinding.FragmentTrackerBinding
@@ -36,14 +37,24 @@ class TrackerFragment : Fragment() {
         val binding: FragmentTrackerBinding
                 = DataBindingUtil.inflate(inflater, R.layout.fragment_tracker, container, false)
 
-        leaderRecyclerView = binding.leadervoardRecylcerView
+        leaderRecyclerView = binding.leaderboardRecylcerView
         with(leaderRecyclerView){
             layoutManager = LinearLayoutManager(requireContext())
             adapter = LeaderboardRecyclerViewAdapter(emptyList())
         }
 
+        bugsRecyclerView = binding.bugsRecylcerView
+        with(bugsRecyclerView){
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = BugsRecyclerViewAdapter(emptyList())
+        }
+
         progressLeader = binding.progressLeader
         progressBugs = binding.progressBugs
+
+        binding.leaderboardCard.setOnClickListener {
+            go2Leaderboard()
+        }
 
         return binding.root
     }
@@ -52,7 +63,7 @@ class TrackerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.fetchTop3LeaderBoard().observe(viewLifecycleOwner, { showLeaderData(it) })
-        //viewModel.fetchAllBugsLocally().observe(viewLifecycleOwner, { showBugsData(it) })
+        viewModel.fetchAllBugsLocally().observe(viewLifecycleOwner, { showBugsData(it) })
     }
 
     private fun showLeaderData(resource: Resource<List<UserShortView>?>){
@@ -76,26 +87,30 @@ class TrackerFragment : Fragment() {
         }
     }
 
-//    private fun showLeaderData(resource: Resource<List<Bug>?>){
-//        when (resource.status) {
-//            Status.SUCCESS -> {
-//                bugsRecyclerView.visibility = View.VISIBLE
-//                progressBugs.visibility = View.INVISIBLE
-//                resource.data?.let { list ->
-//                    leaderRecyclerView.adapter =
-//                        BugsRecyclerViewAdapter(list)
-//                }
-//            }
-//            Status.ERROR -> {
-//                leaderRecyclerView.visibility = View.VISIBLE
-//                Toast.makeText(requireContext(), getString(R.string.connection_failed), Toast.LENGTH_SHORT).show()
-//            }
-//            Status.LOADING -> {
-//                bugsRecyclerView.visibility = View.INVISIBLE
-//                progressBugs.visibility = View.VISIBLE
-//            }
-//        }
-//    }
+    private fun showBugsData(resource: Resource<List<Bug>?>){
+        when (resource.status) {
+            Status.SUCCESS -> {
+                bugsRecyclerView.visibility = View.VISIBLE
+                progressBugs.visibility = View.INVISIBLE
+                resource.data?.let { list ->
+                    bugsRecyclerView.adapter =
+                        BugsRecyclerViewAdapter(list)
+                }
+            }
+            Status.ERROR -> {
+                bugsRecyclerView.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), getString(R.string.connection_failed), Toast.LENGTH_SHORT).show()
+            }
+            Status.LOADING -> {
+                bugsRecyclerView.visibility = View.INVISIBLE
+                progressBugs.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun go2Leaderboard() {
+        Toast.makeText(requireContext(), getString(R.string.no_function), Toast.LENGTH_SHORT).show()
+    }
 
     companion object {
 

@@ -14,12 +14,13 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
+            android:id="@+id/leaderboardCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
+            android:clickable="true"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +46,8 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/leadervoardRecylcerView"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/leaderboardRecylcerView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
@@ -64,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:indeterminate="true"
                     android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/leadervoardRecylcerView"
+                    app:layout_constraintBottom_toBottomOf="@+id/leaderboardRecylcerView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -81,8 +82,8 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+            app:layout_constraintStart_toStartOf="@+id/leaderboardCard"
+            app:layout_constraintTop_toBottomOf="@+id/leaderboardCard" />
 
         <Spinner
             android:id="@+id/spinFilter"
@@ -106,5 +107,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinFilter" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bugsRecylcerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinFilter"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_bug" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/accent_blue"
+            android:text="@string/report_bug"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_add_black"
+            app:iconPadding="8dp"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

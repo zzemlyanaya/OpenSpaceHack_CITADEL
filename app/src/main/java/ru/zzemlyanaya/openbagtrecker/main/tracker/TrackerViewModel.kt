@@ -14,14 +14,14 @@ class TrackerViewModel : ViewModel() {
     var isUpdated = false
 
     private val list = listOf(
-        Bug(0, 0, 0, "Security", "12.10.20", "12:22", "CIT AD EL",
+        Bug(0, 0, "CITADEL", 0, "Security", "12.10.20", "12:22", "CIT AD EL",
             "Google Pixel 3XL", "Android 10", "v12.2.45",
             "Personal Data Visibility", "Open profile"),
-        Bug(1, 1, 0, "Spelling", "6.10.20", "07:20", "Open Space Bank",
+        Bug(1, 1, "OpenSpace Bank",0, "Spelling", "6.10.20", "07:20", "Open Space Bank",
             "Samsung S20", "Android 9", "v12.2.45",
             "Spelling Mistake", "In the 2nd settings"),
-        Bug(2, 3, 1, "Minor", "9.11.20", "18:34", "One More FIO",
-            "Samsung S10", "Android 7.1.1", "v12.2.47",
+        Bug(2, 3, "Oreo", 1, "Minor", "9.11.20", "18:34", "One More FIO",
+            "Xiomi Mi7 Pro", "Android 7.1.1", "v12.2.47",
             "Blocker", "When opening stories"
         ))
 
@@ -86,12 +86,7 @@ class TrackerViewModel : ViewModel() {
 
     fun fetchMyBugsLocally(id: Int) = liveData(Dispatchers.IO){
         emit(Resource.loading(data = null))
-        emit(Resource.success(data =  listOf(
-            Bug(0, 0, 0, "Security", "12.10.20", "12:22", "CIT AD EL",
-                "Google Pixel 3XL", "Android 10", "v12.2.45",
-                "Personal Data Visibility", "Open profile"
-            ))
-        ))
+        emit(Resource.success(data =  list[0]))
 //        try {
 //            emit(Resource.success(localRepository.getUserWithTheirBugs(id)))
 //        } catch (e: Exception){

@@ -32,6 +32,7 @@ class ProfileFragment : Fragment() {
                 = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
 
         binding.textProfileName.text = user.name
+        binding.textProfileCoins.text = user.coins.toString()
         when(user.type) {
             WIZARD ->  {
                 binding.textProfileStatus.text = getString(R.string.wizard)

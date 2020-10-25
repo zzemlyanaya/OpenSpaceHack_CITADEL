@@ -21,9 +21,11 @@ interface IOnBack{
 
 object Constants {
     const val USER = "user"
+    const val COINS = "coins"
     const val WIZARD = 0
     const val PIRATE = 1
     const val ADMIN = 2
+
 
 }
 
@@ -55,7 +57,7 @@ abstract class SwipeToDeleteCallback internal constructor(context: Context) :
     var mContext: Context = context
     private val mClearPaint: Paint = Paint()
     private val mBackground: ColorDrawable = ColorDrawable()
-    private val editColor: Int = Color.parseColor("#DDE7F0")
+    private val editColor: Int = Color.parseColor("#C5F4FF")
     private val editDrawable: VectorDrawable?
     private val intrinsicWidth = 70
     private val intrinsicHeight = 70

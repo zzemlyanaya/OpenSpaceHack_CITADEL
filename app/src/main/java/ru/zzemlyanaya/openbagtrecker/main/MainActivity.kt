@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
     fun showShopFragment(){
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.container_main, ShopFragment(), "shop")
+            .replace(R.id.container_main, ShopFragment.newInstance(currentUser.coins.toString()), "shop")
             .commitAllowingStateLoss()
 
         binding.navView.visibility = View.GONE

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Open Bug Hunter</string>
+    <string name="app_name">Orlan</string>
 
 
     <string name="sign_up">Создать</string>
@@ -15,15 +15,17 @@
     <string name="prompt_password">Пароль</string>
     <string name="prompt_username">Имя персонажа</string>
     <string name="connecting">Соединяем с сервером…</string>
-    <string name="connection_failed">Что-то пошло не так. Нажмите для повторного подключения.</string>
+    <string name="connection_failed">Сервер времено недоступен. Попробуйте позже.</string>
     <string name="personal_data">Продолжая вы даёте согласие на хранение и обработку персональных данных.</string>
 
     <string name="empty_string"> </string>
+    <string name="no_function">Функция в разработке, но мы стараемся</string>
 
     <string name="wizard">Волшебник-тестировщик</string>
     <string name="pirate">Искатель приключений</string>
 
     <string name="go2shop">В магическую лавку</string>
+    <string name="balance">Ваш баланс:</string>
     <string name="back">Обратно</string>
 
     <string name="fio">ФИО</string>
@@ -35,6 +37,7 @@
 
     <string name="leaderboard">Лидерборд</string>
     <string name="show">Показать:</string>
+    <string name="report_bug">Добавить баг</string>
 
     <string name="russian">Русский</string>
     <string name="english">English</string>

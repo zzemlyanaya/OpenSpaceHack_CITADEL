@@ -8,6 +8,8 @@ data class Bug(
     @NonNull
     val authorId: Int,
     @NonNull
+    val authorName: String,
+    @NonNull
     val typeOS: Int, //0=Android, 1=IOS
     @NonNull
     val typeBug: String,
