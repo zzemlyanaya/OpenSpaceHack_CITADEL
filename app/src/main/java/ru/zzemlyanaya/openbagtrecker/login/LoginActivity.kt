@@ -2,8 +2,10 @@ package ru.zzemlyanaya.openbagtrecker.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import ru.zzemlyanaya.openbagtrecker.Constants.USER
@@ -17,8 +19,20 @@ class LoginActivity : AppCompatActivity(), IOnLogin {
 
     private lateinit var binding: ActivityLoginBinding
 
+    private var backPressedOnce = false
+
     override fun onBackPressed() {
-        //TODO("exit on double press")
+        if (backPressedOnce)
+            finish()
+        else {
+            backPressedOnce = true
+            Toast.makeText(
+                this@LoginActivity,
+                "Нажмите ещё раз для выхода",
+                Toast.LENGTH_SHORT
+            ).show()
+            Handler().postDelayed({ backPressedOnce = false }, 2000)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

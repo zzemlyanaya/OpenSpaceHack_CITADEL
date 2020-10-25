@@ -6,7 +6,7 @@
     <string name="sign_in">Войти</string>
     <string name="lets_go">Вперёд!</string>
     <string name="keep_login">Запомнить меня</string>
-    <string name="create_account">Начать приключение</string>
+    <string name="create_account">Начать охоту</string>
     <string name="invalid_username">Имя не может быть пустым</string>
     <string name="invalid_email">Некорректный email</string>
     <string name="invalid_password">Пароль должен содержать как минимум 8 символов</string>

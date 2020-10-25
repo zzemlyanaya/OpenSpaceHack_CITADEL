@@ -1,13 +1,17 @@
 package ru.zzemlyanaya.openbagtrecker.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import ru.zzemlyanaya.openbagtrecker.Constants.USER
 import ru.zzemlyanaya.openbagtrecker.R
 import ru.zzemlyanaya.openbagtrecker.data.model.User
 import ru.zzemlyanaya.openbagtrecker.databinding.ActivityMainBinding
+import ru.zzemlyanaya.openbagtrecker.login.LoginActivity
 import ru.zzemlyanaya.openbagtrecker.main.achiev.AchievementsFragment
 import ru.zzemlyanaya.openbagtrecker.main.chats.ChatsFragment
 import ru.zzemlyanaya.openbagtrecker.main.editprofile.EditProfileFragment
@@ -22,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var currentUser: User
 
     private lateinit var binding: ActivityMainBinding
+
+    private var backPressedOnce = false
 
     fun updateUser(user: User){
         currentUser = user
@@ -52,10 +58,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         when(fragment!!.tag) {
+            "chats", "profile", "tracker", "achiev" -> onBackPressedDouble()
             "shop", "edit_profile" -> showProfileFragment(currentUser)
             "report_bug" -> showTrackerFragment()
             else -> {}
@@ -63,8 +69,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onBackPressedDouble(){
-       //TODO("on back pressed")
+        if (backPressedOnce) {
+            val intent = Intent(this, LoginActivity::class.java).putExtra("LOGOUT", true)
+            startActivity(intent)
+            finish()
+        }
+        else {
+            backPressedOnce = true
+            Toast.makeText(
+                this@MainActivity,
+                "Нажмите ещё раз для выхода",
+                Toast.LENGTH_SHORT
+            ).show()
+            Handler().postDelayed({ backPressedOnce = false }, 2000)
+        }
     }
+
 
     fun showChatsFragment(){
         supportFragmentManager.beginTransaction()
@@ -105,7 +125,7 @@ class MainActivity : AppCompatActivity() {
     fun showShopFragment(){
         supportFragmentManager.beginTransaction()
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .replace(R.id.container_main, ShopFragment.newInstance(currentUser.coins.toString()), "shop")
+            .replace(R.id.container_main, ShopFragment.newInstance((currentUser.coins-currentUser.coins*0.53).toInt().toString()), "shop")
             .commitAllowingStateLoss()
 
         binding.navView.visibility = View.GONE

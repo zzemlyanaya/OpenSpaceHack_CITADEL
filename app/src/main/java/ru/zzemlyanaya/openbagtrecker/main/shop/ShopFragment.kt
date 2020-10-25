@@ -41,6 +41,7 @@ class ShopFragment : Fragment() {
                     Stuff(R.drawable.ic_cup, 100),
                     Stuff(R.drawable.ic_tshirt, 300),
                     Stuff(R.drawable.ic_hoodi, 800),
+                    Stuff(R.drawable.ic_usb, 45)
                 ))
         }
 

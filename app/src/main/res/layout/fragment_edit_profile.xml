@@ -43,8 +43,8 @@
 
         <ImageButton
             android:id="@+id/butBackFromEdit"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="4dp"
             android:backgroundTint="@android:color/transparent"
             android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="@string/back"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="@+id/butBackFromEdit"
             app:layout_constraintStart_toEndOf="@+id/butBackFromEdit"
